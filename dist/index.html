@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Атлас асан с фотографиями и пояснениями преподавателя йоги." />
+    <title>Атлас асан</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="К началу атласа">
+        <span class="brand-mark">अ</span>
+        <span><strong>Атлас асан</strong><small>практика и техника</small></span>
+      </a>
+      <div class="privacy"><span></span> Справочник для учеников</div>
+    </header>
+
+    <main id="top">
+      <section class="intro">
+        <div>
+          <p class="eyebrow">Практический справочник</p>
+          <h1>Найти позу.<br /><em>Понять детали.</em></h1>
+        </div>
+        <p class="intro-copy">Фотографии преподавателя, варианты выполнения и понятные ориентиры для внимательной практики.</p>
+      </section>
+
+      <section class="tools" aria-label="Поиск и фильтры">
+        <div id="modeSwitch" class="mode-switch" aria-label="Источник фотографий" hidden>
+          <button type="button" data-mode="mine">Мои фото</button>
+        </div>
+        <label class="search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+          <input id="search" type="search" autocomplete="off" placeholder="Например: собака вниз, триконасана…" />
+          <kbd>/</kbd>
+        </label>
+        <div id="filters" class="filters" aria-label="Категории"></div>
+        <div class="summary">
+          <span id="resultCount"></span>
+          <div class="summary-actions">
+            <button id="missingOnly" class="text-button" type="button" hidden>○ Только без моих фото</button>
+            <button id="favoritesOnly" class="text-button" type="button">☆ Только избранные</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div id="cards" class="cards" aria-live="polite"></div>
+        <aside id="detail" class="detail" aria-label="Описание асаны"></aside>
+      </section>
+    </main>
+
+    <template id="emptyTemplate">
+      <div class="empty"><span>∿</span><h2>Ничего не найдено</h2><p>Попробуй русское название, санскрит или другую категорию.</p></div>
+    </template>
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Увеличенная фотография">
+      <button class="lightbox-close" type="button" aria-label="Закрыть">×</button>
+      <img alt="" />
+    </div>
+    <script src="./guides.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
