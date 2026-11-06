@@ -258,6 +258,7 @@ function renderCards() {
     <article class="pose-card ${state.selected === pose.id ? "selected" : ""}" data-pose="${pose.id}" tabindex="0" role="button" aria-label="Открыть ${pose.ru}">
       <div class="card-image">
         ${cardImage(pose)}
+        ${(MY_PHOTOS[pose.id]?.length || 0) > 1 ? `<span class="variant-count">1/${MY_PHOTOS[pose.id].length}</span>` : ""}
         <button class="favorite ${state.favorites.has(pose.id) ? "on" : ""}" type="button" data-favorite="${pose.id}" aria-label="Добавить в избранное">${state.favorites.has(pose.id) ? "★" : "☆"}</button>
       </div>
       <div class="card-copy">
@@ -332,7 +333,53 @@ cardsEl.addEventListener("click", (event) => {
   if (!card) return;
   if (window.getSelection()?.toString().trim()) return;
   state.selected = card.dataset.pose;
+  const previewIndex = Number(card.dataset.previewIndex);
+  if (Number.isInteger(previewIndex)) state.variantByPose[state.selected] = previewIndex;
   renderCards(); renderDetail(true);
+});
+
+let hoverTimer = null;
+let hoverCard = null;
+
+function showCardVariant(card, index) {
+  const variants = MY_PHOTOS[card.dataset.pose] || [];
+  if (!variants[index]) return;
+  const image = card.querySelector(".card-image img");
+  const count = card.querySelector(".variant-count");
+  if (image) {
+    image.src = `./assets/mine/${variants[index].src}`;
+    image.alt = `${card.querySelector("h2")?.textContent || "Асана"}, ${variants[index].label}`;
+  }
+  if (count) count.textContent = `${index + 1}/${variants.length}`;
+  card.dataset.previewIndex = String(index);
+}
+
+function stopCardPreview(card = hoverCard) {
+  if (hoverTimer) clearInterval(hoverTimer);
+  hoverTimer = null;
+  if (card?.isConnected) showCardVariant(card, state.variantByPose[card.dataset.pose] || 0);
+  hoverCard = null;
+}
+
+cardsEl.addEventListener("mouseover", (event) => {
+  const card = event.target.closest("[data-pose]");
+  if (!card || card.contains(event.relatedTarget)) return;
+  const variants = MY_PHOTOS[card.dataset.pose] || [];
+  if (variants.length < 2) return;
+  stopCardPreview();
+  hoverCard = card;
+  let index = state.variantByPose[card.dataset.pose] || 0;
+  card.dataset.previewIndex = String(index);
+  hoverTimer = setInterval(() => {
+    index = (index + 1) % variants.length;
+    showCardVariant(card, index);
+  }, 900);
+});
+
+cardsEl.addEventListener("mouseout", (event) => {
+  const card = event.target.closest("[data-pose]");
+  if (!card || card.contains(event.relatedTarget)) return;
+  stopCardPreview(card);
 });
 
 cardsEl.addEventListener("keydown", (event) => {
