@@ -274,12 +274,18 @@ function renderDetail(openOnMobile = false) {
   const guide = window.POSE_GUIDES?.[pose.id] || "Входите в позу постепенно, сохраняйте ровное дыхание и выбирайте доступную амплитуду без боли.";
   const visual = currentVisual(pose);
   const myVariants = MY_PHOTOS[pose.id] || [];
+  const variantIndex = Math.min(state.variantByPose[pose.id] || 0, Math.max(myVariants.length - 1, 0));
   const notes = localStorage.getItem(`asana-note:${pose.id}`) || "";
   const hero = visual
     ? `<img src="${visual.path}" alt="${pose.ru}" />`
     : `<div class="placeholder-art"><span>${pose.ru.slice(0, 1)}</span></div>`;
+  const galleryControls = myVariants.length > 1 ? `
+    <button class="detail-gallery-arrow previous" type="button" data-gallery-step="-1" aria-label="Предыдущее фото">‹</button>
+    <button class="detail-gallery-arrow next" type="button" data-gallery-step="1" aria-label="Следующее фото">›</button>
+    <div class="detail-gallery-status" aria-live="polite"><span>${variantIndex + 1} / ${myVariants.length}</span><small>${myVariants[variantIndex].label}</small></div>
+    <div class="swipe-hint" aria-hidden="true">↔ Листайте фото пальцем</div>` : "";
   detailEl.innerHTML = `
-    <div class="detail-hero">${hero}<button class="close-detail" type="button" aria-label="Закрыть">×</button></div>
+    <div class="detail-hero">${hero}${galleryControls}<button class="close-detail" type="button" aria-label="Закрыть">×</button></div>
     <div class="detail-body">
       <div class="detail-topline"><span class="local-label">Техника выполнения</span><button class="text-button detail-favorite" type="button">${state.favorites.has(pose.id) ? "★ В избранном" : "☆ В избранное"}</button></div>
       <div class="detail-title-row"><h2>${pose.ru}</h2><button class="copy-title" type="button" data-copy-title="${pose.ru}" aria-label="Скопировать название">Копировать</button></div><p class="sanskrit">${pose.sa}</p>
@@ -297,6 +303,15 @@ function renderDetail(openOnMobile = false) {
 
 function saveFavorites() {
   localStorage.setItem("asana-favorites", JSON.stringify([...state.favorites]));
+}
+
+function changeDetailVariant(step) {
+  const variants = MY_PHOTOS[state.selected] || [];
+  if (variants.length < 2) return;
+  const current = state.variantByPose[state.selected] || 0;
+  state.variantByPose[state.selected] = (current + step + variants.length) % variants.length;
+  renderCards();
+  renderDetail(true);
 }
 
 filtersEl.addEventListener("click", (event) => {
@@ -318,8 +333,6 @@ modeSwitchEl.addEventListener("click", (event) => {
 });
 
 cardsEl.addEventListener("click", (event) => {
-  const image = event.target.closest(".card-image img");
-  if (image) { event.stopPropagation(); openLightbox(image); return; }
   const favorite = event.target.closest("[data-favorite]");
   if (favorite) {
     event.stopPropagation();
@@ -388,7 +401,16 @@ cardsEl.addEventListener("keydown", (event) => {
 
 detailEl.addEventListener("click", (event) => {
   const image = event.target.closest(".detail-hero img");
-  if (image) { openLightbox(image); return; }
+  if (image) {
+    if (Date.now() < suppressImageClickUntil) return;
+    openLightbox(image);
+    return;
+  }
+  const galleryArrow = event.target.closest("[data-gallery-step]");
+  if (galleryArrow) {
+    changeDetailVariant(Number(galleryArrow.dataset.galleryStep));
+    return;
+  }
   const detailMode = event.target.closest("[data-detail-mode]");
   if (detailMode) {
     state.mode = detailMode.dataset.detailMode;
@@ -419,6 +441,26 @@ detailEl.addEventListener("click", (event) => {
   }
 });
 
+let detailTouchStart = null;
+let suppressImageClickUntil = 0;
+
+detailEl.addEventListener("touchstart", (event) => {
+  if (!event.target.closest(".detail-hero") || (MY_PHOTOS[state.selected] || []).length < 2) return;
+  const touch = event.changedTouches[0];
+  detailTouchStart = { x: touch.clientX, y: touch.clientY };
+}, { passive: true });
+
+detailEl.addEventListener("touchend", (event) => {
+  if (!detailTouchStart) return;
+  const touch = event.changedTouches[0];
+  const deltaX = touch.clientX - detailTouchStart.x;
+  const deltaY = touch.clientY - detailTouchStart.y;
+  detailTouchStart = null;
+  if (Math.abs(deltaX) < 45 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+  suppressImageClickUntil = Date.now() + 500;
+  changeDetailVariant(deltaX < 0 ? 1 : -1);
+}, { passive: true });
+
 let noteTimer;
 detailEl.addEventListener("input", (event) => {
   if (!event.target.matches(".notes")) return;
@@ -434,6 +476,10 @@ detailEl.addEventListener("input", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "/" && document.activeElement !== searchEl) { event.preventDefault(); searchEl.focus(); }
   if (event.key === "Escape") { closeLightbox(); detailEl.classList.remove("open"); document.body.classList.remove("detail-open"); }
+  if (detailEl.classList.contains("open") && !lightboxEl.classList.contains("open") && (event.key === "ArrowLeft" || event.key === "ArrowRight")) {
+    event.preventDefault();
+    changeDetailVariant(event.key === "ArrowRight" ? 1 : -1);
+  }
 });
 
 lightboxEl.addEventListener("click", (event) => {
