@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: yoga-irina-vivchar
+    runtime: static
+    repo: https://github.com/irivivchar-arch/yoga-irina-site
+    branch: main
+    buildCommand: echo "Static site ready"
+    staticPublishPath: ./dist
+    autoDeployTrigger: commit
