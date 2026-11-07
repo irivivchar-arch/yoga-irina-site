@@ -494,7 +494,7 @@ renderDetail();
 
 const classCardsEl = document.getElementById("classCards");
 const classFiltersEl = document.getElementById("classFilters");
-const recordingLabels = { all: "Все занятия", yoga: "Йога", hammock: "Йога в гамаках" };
+const recordingLabels = { all: "Все записи", yoga: "Хатха-йога", hammock: "Йога в гамаках · архив" };
 let activeRecordingStyle = "all";
 
 function escapeRecordingText(value) {
@@ -538,3 +538,25 @@ classFiltersEl.addEventListener("click", (event) => {
 
 renderClassFilters();
 renderClassCards();
+
+const flowCardsEl = document.getElementById("flowCards");
+
+function renderFlowCards() {
+  flowCardsEl.innerHTML = window.INSIDE_FLOW_RECORDINGS.map((flow, index) => `
+    <a class="flow-card" href="${flow.url}" target="_blank" rel="noopener noreferrer" aria-label="Открыть флоу: ${escapeRecordingText(flow.title)}">
+      <span class="flow-number">${String(index + 1).padStart(2, "0")}</span>
+      <span class="flow-cover">
+        <img src="${flow.thumbnail}" alt="" loading="lazy" />
+        <span class="play-mark" aria-hidden="true"><i></i></span>
+        <span class="class-duration">${flow.duration}</span>
+      </span>
+      <span class="flow-copy">
+        <small>Полная версия</small>
+        <strong>${escapeRecordingText(flow.title)}</strong>
+        <span>Смотреть флоу <b aria-hidden="true">↗</b></span>
+      </span>
+    </a>
+  `).join("");
+}
+
+renderFlowCards();

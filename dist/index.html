@@ -17,7 +17,9 @@
       <div class="topbar-actions">
         <nav class="section-nav" aria-label="Разделы сайта">
           <a href="#top">Асаны</a>
-          <a href="#classes">Занятия</a>
+          <a href="#flows">Флоу</a>
+          <a href="#classes">Архив</a>
+          <a href="#contacts">Контакты</a>
         </nav>
         <div class="privacy"><span></span> Справочник для учеников</div>
       </div>
@@ -54,19 +56,55 @@
         <aside id="detail" class="detail" aria-label="Описание асаны"></aside>
       </section>
 
+      <section id="flows" class="flow-library" aria-labelledby="flowsTitle">
+        <div class="flow-heading">
+          <div>
+            <p class="eyebrow">Движение и музыка</p>
+            <h2 id="flowsTitle">Inside Flow<br /><em>Yoga</em></h2>
+          </div>
+          <div class="flow-intro">
+            <p>Авторские последовательности, в которых дыхание, движение и музыка соединяются в единый поток.</p>
+            <a href="https://www.youtube.com/playlist?list=PLsohTQgxwCd0YOTB8znKTmwpbhH9a9XtN" target="_blank" rel="noopener noreferrer">Открыть плейлист «Мои флоу» ↗</a>
+          </div>
+        </div>
+        <div id="flowCards" class="flow-cards"></div>
+      </section>
+
       <section id="classes" class="class-library" aria-labelledby="classesTitle">
         <div class="class-heading">
           <div>
-            <p class="eyebrow">Практика вместе со мной</p>
-            <h2 id="classesTitle">Записи занятий</h2>
+            <p class="eyebrow">Полные групповые практики</p>
+            <h2 id="classesTitle">Архив занятий</h2>
           </div>
           <div class="class-intro">
-            <p>Полноценные занятия на коврике и в гамаках. Выберите практику — видео откроется на YouTube.</p>
+            <p>Записи прошлых занятий по хатха-йоге и йоге в гамаках. Гамаки представлены только в архиве.</p>
             <a href="https://youtube.com/@iriflow" target="_blank" rel="noopener noreferrer">Открыть весь канал ↗</a>
           </div>
         </div>
         <div id="classFilters" class="class-filters" aria-label="Вид занятия"></div>
         <div id="classCards" class="class-cards"></div>
+      </section>
+
+      <section id="contacts" class="contact-section" aria-labelledby="contactsTitle">
+        <div>
+          <p class="eyebrow">Запись и вопросы</p>
+          <h2 id="contactsTitle">Связаться<br /><em>со мной</em></h2>
+        </div>
+        <div class="contact-panel">
+          <p>Напишите мне, если хотите уточнить расписание, выбрать занятие или записаться на практику.</p>
+          <div class="contact-links">
+            <a class="contact-link primary" href="https://t.me/YogaIrinaViv" target="_blank" rel="noopener noreferrer">
+              <span>Telegram</span>
+              <strong>@YogaIrinaViv</strong>
+              <b aria-hidden="true">↗</b>
+            </a>
+            <a class="contact-link" href="tel:+79284063931">
+              <span>Телефон</span>
+              <strong>+7 928 406-39-31</strong>
+              <b aria-hidden="true">↗</b>
+            </a>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -78,6 +116,7 @@
       <img alt="" />
     </div>
     <script src="./guides.js"></script>
+    <script src="./flows.js"></script>
     <script src="./classes.js"></script>
     <script src="./app.js"></script>
   </body>
