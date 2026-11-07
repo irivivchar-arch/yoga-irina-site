@@ -12,7 +12,7 @@ const CATEGORIES = {
 const defaultCues = ["Сохранять ровное спокойное дыхание", "Не допускать боли и резких ощущений", "Сверять положение суставов с пояснениями преподавателя"];
 
 const poses = [
-  {id:"surya-namaskar", ru:"Сурья Намаскар", sa:"Sūrya Namaskāra", alias:"приветствие солнцу шивананда аштанга виньяса", cat:"standing", bookMissing:true},
+  {id:"surya-namaskar", ru:"Сурья Намаскар", sa:"Sūrya Namaskāra", alias:"приветствие солнцу шивананда аштанга виньяса", cat:"standing", showWithoutPhoto:true, hold:"Последовательность"},
   {id:"padangusthasana", ru:"Падангуштхасана", sa:"Pādāṅguṣṭhāsana", alias:"наклон стоя захват больших пальцев", cat:"standing", image:"padangusthasana.jpg", photo:"44", cues:["Стопы параллельны, вес распределён равномерно", "Живот и грудная клетка движутся к ногам", "Шея свободна, коленные чашечки подтянуты"]},
   {id:"chaturanga", ru:"Чатуранга Дандасана", sa:"Caturaṅga Daṇḍāsana", alias:"низкая планка четыре опоры", cat:"strength", image:"chaturanga-dandasana.jpg", images:["chaturanga-start.jpg","chaturanga-dandasana.jpg"], photo:"67", cues:["Тело вытянуто одной линией", "Локти направлены назад и прижаты к корпусу", "Плечи не проваливаются ниже без контроля"]},
   {id:"urdhva-mukha", ru:"Урдхва Мукха Шванасана", sa:"Ūrdhva Mukha Śvānāsana", alias:"собака мордой вверх прогиб", cat:"backbend", image:"urdhva-mukha-svanasana.jpg", photo:"74", cues:["Опора на ладони и подъёмы стоп, бёдра над полом", "Грудная клетка раскрывается вперёд и вверх", "Плечи отведены от ушей"]},
@@ -216,7 +216,7 @@ function filteredPoses() {
     const favoriteMatch = !state.favoritesOnly || state.favorites.has(pose.id);
     const haystack = normalize(`${pose.ru} ${pose.sa} ${pose.alias}`);
     const queryMatch = !query || query.split(" ").every((part) => haystack.includes(part));
-    return hasMyPhoto && categoryMatch && favoriteMatch && queryMatch;
+    return (hasMyPhoto || pose.showWithoutPhoto) && categoryMatch && favoriteMatch && queryMatch;
   });
 }
 
@@ -239,12 +239,13 @@ function currentVisual(pose) {
 function cardImage(pose) {
   const visual = currentVisual(pose);
   if (visual) return `<img src="${visual.path}" alt="${pose.ru}" loading="lazy" style="--photo-focus:${visual.focus || "50% 50%"}" /><span class="source-dot mine">Фото преподавателя</span>`;
+  if (pose.showWithoutPhoto) return `<div class="placeholder-art sequence-art" aria-label="Последовательность Сурья Намаскар"><span>☀</span></div><span class="source-dot sequence">Последовательность</span>`;
   return `<div class="placeholder-art" aria-label="Изображение будет добавлено"><span>${pose.ru.slice(0, 1)}</span></div>`;
 }
 
 function renderCards() {
   const items = filteredPoses();
-  const withMyPhoto = Object.keys(MY_PHOTOS).length;
+  const withMyPhoto = poses.filter((pose) => MY_PHOTOS[pose.id]?.length || pose.showWithoutPhoto).length;
   resultCountEl.textContent = `Показано ${items.length} из ${withMyPhoto} опубликованных поз`;
   favoritesOnlyEl.classList.toggle("active", state.favoritesOnly);
   favoritesOnlyEl.textContent = state.favoritesOnly ? "★ Показаны избранные" : "☆ Только избранные";
@@ -491,72 +492,3 @@ renderFilters();
 renderModeSwitch();
 renderCards();
 renderDetail();
-
-const classCardsEl = document.getElementById("classCards");
-const classFiltersEl = document.getElementById("classFilters");
-const recordingLabels = { all: "Все записи", yoga: "Хатха-йога", hammock: "Йога в гамаках · архив" };
-let activeRecordingStyle = "all";
-
-function escapeRecordingText(value) {
-  return String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
-}
-
-function renderClassFilters() {
-  classFiltersEl.innerHTML = Object.entries(recordingLabels).map(([key, label]) => {
-    const count = key === "all" ? window.CLASS_RECORDINGS.length : window.CLASS_RECORDINGS.filter((item) => item.style === key).length;
-    return `<button class="class-filter${activeRecordingStyle === key ? " active" : ""}" type="button" data-class-filter="${key}">${label} <span>${count}</span></button>`;
-  }).join("");
-}
-
-function renderClassCards() {
-  const recordings = activeRecordingStyle === "all"
-    ? window.CLASS_RECORDINGS
-    : window.CLASS_RECORDINGS.filter((item) => item.style === activeRecordingStyle);
-  classCardsEl.innerHTML = recordings.map((recording) => `
-    <a class="class-card" href="${recording.url}" target="_blank" rel="noopener noreferrer" aria-label="Открыть занятие: ${escapeRecordingText(recording.title)}">
-      <span class="class-cover">
-        <img src="${recording.thumbnail}" alt="" loading="lazy" />
-        <span class="play-mark" aria-hidden="true"><i></i></span>
-        <span class="class-duration">${recording.duration}</span>
-      </span>
-      <span class="class-copy">
-        <small>${recordingLabels[recording.style]}</small>
-        <strong>${escapeRecordingText(recording.title)}</strong>
-        <span>Смотреть на YouTube <b aria-hidden="true">↗</b></span>
-      </span>
-    </a>
-  `).join("");
-}
-
-classFiltersEl.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-class-filter]");
-  if (!button) return;
-  activeRecordingStyle = button.dataset.classFilter;
-  renderClassFilters();
-  renderClassCards();
-});
-
-renderClassFilters();
-renderClassCards();
-
-const flowCardsEl = document.getElementById("flowCards");
-
-function renderFlowCards() {
-  flowCardsEl.innerHTML = window.INSIDE_FLOW_RECORDINGS.map((flow, index) => `
-    <a class="flow-card" href="${flow.url}" target="_blank" rel="noopener noreferrer" aria-label="Открыть флоу: ${escapeRecordingText(flow.title)}">
-      <span class="flow-number">${String(index + 1).padStart(2, "0")}</span>
-      <span class="flow-cover">
-        <img src="${flow.thumbnail}" alt="" loading="lazy" />
-        <span class="play-mark" aria-hidden="true"><i></i></span>
-        <span class="class-duration">${flow.duration}</span>
-      </span>
-      <span class="flow-copy">
-        <small>Полная версия</small>
-        <strong>${escapeRecordingText(flow.title)}</strong>
-        <span>Смотреть флоу <b aria-hidden="true">↗</b></span>
-      </span>
-    </a>
-  `).join("");
-}
-
-renderFlowCards();

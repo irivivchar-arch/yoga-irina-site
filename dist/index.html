@@ -3,121 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Атлас асан с фотографиями и пояснениями преподавателя йоги." />
-    <title>Атлас асан</title>
-    <link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css" />
+    <meta name="description" content="Хатха-йога и Inside Flow Yoga с Ириной Вивчарь. Практики, справочник асан и архив занятий." />
+    <title>Ирина Вивчарь · Хатха-йога и Inside Flow</title>
+    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
-  <body>
-    <header class="topbar">
-      <a class="brand" href="#top" aria-label="К началу атласа">
+  <body class="site-page home-page">
+    <header class="site-header">
+      <a class="site-brand" href="/" aria-label="На главную">
         <span class="brand-mark">अ</span>
-        <span><strong>Атлас асан</strong><small>практика и техника</small></span>
+        <span><strong>Ирина Вивчарь</strong><small>хатха-йога · inside flow</small></span>
       </a>
-      <div class="topbar-actions">
-        <nav class="section-nav" aria-label="Разделы сайта">
-          <a href="#top">Асаны</a>
-          <a href="#flows">Флоу</a>
-          <a href="#classes">Архив</a>
-          <a href="#contacts">Контакты</a>
-        </nav>
-        <div class="privacy"><span></span> Справочник для учеников</div>
-      </div>
+      <nav class="site-tabs" aria-label="Разделы сайта">
+        <a class="active" href="/">Главная</a>
+        <a href="/asanas/">Асаны</a>
+        <a href="/inside-flow/">Inside Flow</a>
+        <a href="/archive/">Архив</a>
+        <a href="/about/">Обо мне</a>
+      </nav>
+      <a class="header-cta" href="/contacts/">Записаться</a>
     </header>
 
-    <main id="top">
-      <section class="intro">
-        <div>
-          <p class="eyebrow">Практический справочник</p>
-          <h1>Найти позу.<br /><em>Понять детали.</em></h1>
-        </div>
-        <p class="intro-copy">Фотографии преподавателя, варианты выполнения и понятные ориентиры для внимательной практики.</p>
-      </section>
-
-      <section class="tools" aria-label="Поиск и фильтры">
-        <div id="modeSwitch" hidden></div>
-        <label class="search">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
-          <input id="search" type="search" autocomplete="off" placeholder="Например: собака вниз, триконасана…" />
-          <kbd>/</kbd>
-        </label>
-        <div id="filters" class="filters" aria-label="Категории"></div>
-        <div class="summary">
-          <span id="resultCount"></span>
-          <div class="summary-actions">
-            <button id="missingOnly" class="text-button" type="button" hidden>○ Только без моих фото</button>
-            <button id="favoritesOnly" class="text-button" type="button">☆ Только избранные</button>
+    <main>
+      <section class="home-hero">
+        <div class="home-hero-copy">
+          <p class="eyebrow">Йога с Ириной Вивчарь</p>
+          <h1>Сила в движении.<br /><em>Свобода в потоке.</em></h1>
+          <p class="home-lead">Хатха-йога для сильной и внимательной практики. Inside Flow — для тех, кто хочет соединить дыхание, движение и музыку.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="/contacts/">Записаться на занятие</a>
+            <a class="button secondary" href="/inside-flow/">Посмотреть флоу</a>
           </div>
+          <div class="direction-tags"><span>Хатха-йога</span><span>Inside Flow Yoga</span></div>
+        </div>
+        <div class="home-visual">
+          <img src="/assets/mine/16-vrikshasana.jpg" alt="Ирина выполняет Врикшасану" />
+          <div class="visual-caption"><strong>Практика с вниманием к деталям</strong><span>онлайн · в своём темпе</span></div>
         </div>
       </section>
 
-      <section class="workspace">
-        <div id="cards" class="cards" aria-live="polite"></div>
-        <aside id="detail" class="detail" aria-label="Описание асаны"></aside>
+      <section class="directions-section">
+        <div class="section-heading compact">
+          <div><p class="eyebrow">Актуальные направления</p><h2>Выбрать свою практику</h2></div>
+          <p>Сейчас я веду занятия по хатха-йоге и Inside Flow. Йога в гамаках сохранена только в архиве записей.</p>
+        </div>
+        <div class="direction-grid">
+          <article class="direction-card hatha-card">
+            <span class="card-index">01</span>
+            <div><small>Основа и сила</small><h3>Хатха-йога</h3><p>Внимательная работа с телом, силой, устойчивостью и подвижностью.</p></div>
+            <a href="/contacts/">Узнать о занятиях ↗</a>
+          </article>
+          <article class="direction-card flow-direction-card">
+            <span class="card-index">02</span>
+            <div><small>Движение и музыка</small><h3>Inside Flow Yoga</h3><p>Авторские музыкальные последовательности и плавное движение в ритме дыхания.</p></div>
+            <a href="/inside-flow/">Смотреть полные флоу ↗</a>
+          </article>
+        </div>
       </section>
 
-      <section id="flows" class="flow-library" aria-labelledby="flowsTitle">
-        <div class="flow-heading">
-          <div>
-            <p class="eyebrow">Движение и музыка</p>
-            <h2 id="flowsTitle">Inside Flow<br /><em>Yoga</em></h2>
-          </div>
-          <div class="flow-intro">
-            <p>Авторские последовательности, в которых дыхание, движение и музыка соединяются в единый поток.</p>
-            <a href="https://www.youtube.com/playlist?list=PLsohTQgxwCd0YOTB8znKTmwpbhH9a9XtN" target="_blank" rel="noopener noreferrer">Открыть плейлист «Мои флоу» ↗</a>
-          </div>
+      <section class="explore-section">
+        <div class="section-heading compact">
+          <div><p class="eyebrow">Материалы для учеников</p><h2>Практиковать и разбираться</h2></div>
         </div>
-        <div id="flowCards" class="flow-cards"></div>
+        <div class="explore-grid">
+          <a class="explore-card" href="/asanas/"><span>59 материалов</span><h3>Справочник асан</h3><p>Фотографии, варианты выполнения и понятные ориентиры.</p><b>Открыть справочник →</b></a>
+          <a class="explore-card" href="/inside-flow/"><span>7 полных видео</span><h3>Авторские флоу</h3><p>Полные версии из плейлиста «Мои флоу».</p><b>Смотреть флоу →</b></a>
+          <a class="explore-card" href="/archive/"><span>21 запись</span><h3>Архив занятий</h3><p>Хатха-йога и прежние занятия в гамаках.</p><b>Перейти в архив →</b></a>
+        </div>
       </section>
 
-      <section id="classes" class="class-library" aria-labelledby="classesTitle">
-        <div class="class-heading">
-          <div>
-            <p class="eyebrow">Полные групповые практики</p>
-            <h2 id="classesTitle">Архив занятий</h2>
-          </div>
-          <div class="class-intro">
-            <p>Записи прошлых занятий по хатха-йоге и йоге в гамаках. Гамаки представлены только в архиве.</p>
-            <a href="https://youtube.com/@iriflow" target="_blank" rel="noopener noreferrer">Открыть весь канал ↗</a>
-          </div>
-        </div>
-        <div id="classFilters" class="class-filters" aria-label="Вид занятия"></div>
-        <div id="classCards" class="class-cards"></div>
-      </section>
-
-      <section id="contacts" class="contact-section" aria-labelledby="contactsTitle">
-        <div>
-          <p class="eyebrow">Запись и вопросы</p>
-          <h2 id="contactsTitle">Связаться<br /><em>со мной</em></h2>
-        </div>
-        <div class="contact-panel">
-          <p>Напишите мне, если хотите уточнить расписание, выбрать занятие или записаться на практику.</p>
-          <div class="contact-links">
-            <a class="contact-link primary" href="https://t.me/YogaIrinaViv" target="_blank" rel="noopener noreferrer">
-              <span>Telegram</span>
-              <strong>@YogaIrinaViv</strong>
-              <b aria-hidden="true">↗</b>
-            </a>
-            <a class="contact-link" href="tel:+79284063931">
-              <span>Телефон</span>
-              <strong>+7 928 406-39-31</strong>
-              <b aria-hidden="true">↗</b>
-            </a>
-          </div>
-        </div>
+      <section class="home-contact-strip">
+        <div><p class="eyebrow">Запись и вопросы</p><h2>Начнём с разговора</h2></div>
+        <p>Напишите, если хотите выбрать формат практики или уточнить расписание.</p>
+        <a class="button light" href="/contacts/">Связаться со мной</a>
       </section>
     </main>
 
-    <template id="emptyTemplate">
-      <div class="empty"><span>∿</span><h2>Ничего не найдено</h2><p>Попробуй русское название, санскрит или другую категорию.</p></div>
-    </template>
-    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Увеличенная фотография">
-      <button class="lightbox-close" type="button" aria-label="Закрыть">×</button>
-      <img alt="" />
-    </div>
-    <script src="./guides.js"></script>
-    <script src="./flows.js"></script>
-    <script src="./classes.js"></script>
-    <script src="./app.js"></script>
+    <footer class="site-footer"><span>Ирина Вивчарь · Йога</span><div><a href="https://t.me/YogaIrinaViv" target="_blank" rel="noopener">Telegram</a><a href="tel:+79284063931">+7 928 406-39-31</a></div></footer>
   </body>
 </html>
