@@ -238,7 +238,7 @@ function currentVisual(pose) {
 
 function cardImage(pose) {
   const visual = currentVisual(pose);
-  if (visual) return `<img src="${visual.path}" alt="${pose.ru}" loading="lazy" /><span class="source-dot mine">Фото преподавателя</span>`;
+  if (visual) return `<img src="${visual.path}" alt="${pose.ru}" loading="lazy" style="--photo-focus:${visual.focus || "50% 50%"}" /><span class="source-dot mine">Фото преподавателя</span>`;
   return `<div class="placeholder-art" aria-label="Изображение будет добавлено"><span>${pose.ru.slice(0, 1)}</span></div>`;
 }
 
@@ -362,6 +362,7 @@ function showCardVariant(card, index) {
   if (image) {
     image.src = `./assets/mine/${variants[index].src}`;
     image.alt = `${card.querySelector("h2")?.textContent || "Асана"}, ${variants[index].label}`;
+    image.style.setProperty("--photo-focus", variants[index].focus || "50% 50%");
   }
   if (count) count.textContent = `${index + 1}/${variants.length}`;
   card.dataset.previewIndex = String(index);

@@ -59,8 +59,8 @@ kbd { padding: 5px 9px; border: 1px solid var(--line); border-bottom-width: 2px;
 .pose-card { position: relative; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #fff; cursor: pointer; transition: transform .2s, border-color .2s, box-shadow .2s; }
 .pose-card:hover { transform: translateY(-3px); border-color: #aeb9b0; box-shadow: 0 16px 38px rgba(37,49,42,.09); }
 .pose-card.selected { border-color: var(--forest); box-shadow: 0 0 0 1px var(--forest); }
-.card-image { position: relative; aspect-ratio: 1.3; overflow: hidden; background: linear-gradient(145deg, #dfe6d8, #b9cbb8); }
-.card-image img { width: 100%; height: 100%; display: block; object-fit: contain; background: #f2f1ed; filter: contrast(1.02); cursor: zoom-in; }
+.card-image { position: relative; aspect-ratio: 1; overflow: hidden; background: linear-gradient(145deg, #dfe6d8, #b9cbb8); }
+.card-image img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: var(--photo-focus, 50% 50%); background: #f2f1ed; filter: contrast(1.02); cursor: pointer; }
 .placeholder-art { width: 100%; height: 100%; display: grid; place-items: center; color: rgba(41,69,56,.55); }
 .placeholder-art::before { content: ''; position: absolute; width: 54%; height: 54%; border: 1px solid rgba(41,69,56,.25); border-radius: 50%; }
 .placeholder-art span { position: relative; z-index: 1; font-family: Georgia, serif; font-size: 38px; }
