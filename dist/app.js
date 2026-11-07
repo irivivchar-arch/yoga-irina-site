@@ -491,3 +491,50 @@ renderFilters();
 renderModeSwitch();
 renderCards();
 renderDetail();
+
+const classCardsEl = document.getElementById("classCards");
+const classFiltersEl = document.getElementById("classFilters");
+const recordingLabels = { all: "Все занятия", yoga: "Йога", hammock: "Йога в гамаках" };
+let activeRecordingStyle = "all";
+
+function escapeRecordingText(value) {
+  return String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+}
+
+function renderClassFilters() {
+  classFiltersEl.innerHTML = Object.entries(recordingLabels).map(([key, label]) => {
+    const count = key === "all" ? window.CLASS_RECORDINGS.length : window.CLASS_RECORDINGS.filter((item) => item.style === key).length;
+    return `<button class="class-filter${activeRecordingStyle === key ? " active" : ""}" type="button" data-class-filter="${key}">${label} <span>${count}</span></button>`;
+  }).join("");
+}
+
+function renderClassCards() {
+  const recordings = activeRecordingStyle === "all"
+    ? window.CLASS_RECORDINGS
+    : window.CLASS_RECORDINGS.filter((item) => item.style === activeRecordingStyle);
+  classCardsEl.innerHTML = recordings.map((recording) => `
+    <a class="class-card" href="${recording.url}" target="_blank" rel="noopener noreferrer" aria-label="Открыть занятие: ${escapeRecordingText(recording.title)}">
+      <span class="class-cover">
+        <img src="${recording.thumbnail}" alt="" loading="lazy" />
+        <span class="play-mark" aria-hidden="true"><i></i></span>
+        <span class="class-duration">${recording.duration}</span>
+      </span>
+      <span class="class-copy">
+        <small>${recordingLabels[recording.style]}</small>
+        <strong>${escapeRecordingText(recording.title)}</strong>
+        <span>Смотреть на YouTube <b aria-hidden="true">↗</b></span>
+      </span>
+    </a>
+  `).join("");
+}
+
+classFiltersEl.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-class-filter]");
+  if (!button) return;
+  activeRecordingStyle = button.dataset.classFilter;
+  renderClassFilters();
+  renderClassCards();
+});
+
+renderClassFilters();
+renderClassCards();

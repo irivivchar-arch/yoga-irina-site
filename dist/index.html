@@ -14,7 +14,13 @@
         <span class="brand-mark">अ</span>
         <span><strong>Атлас асан</strong><small>практика и техника</small></span>
       </a>
-      <div class="privacy"><span></span> Справочник для учеников</div>
+      <div class="topbar-actions">
+        <nav class="section-nav" aria-label="Разделы сайта">
+          <a href="#top">Асаны</a>
+          <a href="#classes">Занятия</a>
+        </nav>
+        <div class="privacy"><span></span> Справочник для учеников</div>
+      </div>
     </header>
 
     <main id="top">
@@ -47,6 +53,21 @@
         <div id="cards" class="cards" aria-live="polite"></div>
         <aside id="detail" class="detail" aria-label="Описание асаны"></aside>
       </section>
+
+      <section id="classes" class="class-library" aria-labelledby="classesTitle">
+        <div class="class-heading">
+          <div>
+            <p class="eyebrow">Практика вместе со мной</p>
+            <h2 id="classesTitle">Записи занятий</h2>
+          </div>
+          <div class="class-intro">
+            <p>Полноценные занятия на коврике и в гамаках. Выберите практику — видео откроется на YouTube.</p>
+            <a href="https://youtube.com/@iriflow" target="_blank" rel="noopener noreferrer">Открыть весь канал ↗</a>
+          </div>
+        </div>
+        <div id="classFilters" class="class-filters" aria-label="Вид занятия"></div>
+        <div id="classCards" class="class-cards"></div>
+      </section>
     </main>
 
     <template id="emptyTemplate">
@@ -57,6 +78,7 @@
       <img alt="" />
     </div>
     <script src="./guides.js"></script>
+    <script src="./classes.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>
