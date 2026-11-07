@@ -386,10 +386,16 @@ body.detail-open { overflow: hidden; }
   .header-cta { min-height: 38px; padding-inline: 13px; font-size: 11px; }
   .site-tabs { grid-template-columns: repeat(3,1fr); gap: 3px; }
   .site-tabs a { min-height: 40px; font-size: 11px; }
-  .home-hero { padding: 45px 18px 52px; }
-  .home-hero h1 { font-size: 42px; }
-  .home-lead { font-size: 18px; }
-  .home-visual { aspect-ratio: 1; }
+  .home-hero { position: relative; display: block; padding: 12px; }
+  .home-visual { width: 100%; height: calc(100svh - 170px); min-height: 540px; max-height: 680px; aspect-ratio: auto; border-radius: 22px; }
+  .home-visual img { object-position: 50% 50%; }
+  .home-hero-copy { position: absolute; z-index: 2; left: 24px; right: 24px; bottom: 26px; max-width: none; padding: 18px; border: 1px solid rgba(36,79,62,.14); border-radius: 18px; background: rgba(255,253,248,.92); box-shadow: 0 14px 36px rgba(35,53,43,.14); backdrop-filter: blur(14px); }
+  .home-hero-copy .eyebrow { margin-bottom: 9px; font-size: 8px; }
+  .home-hero h1 { font-size: clamp(29px,8.3vw,34px); line-height: .98; }
+  .home-lead { margin-top: 12px; font-size: 14px; line-height: 1.36; }
+  .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 14px; }
+  .hero-actions .button { min-height: 40px; padding: 0 8px; font-size: 9px; line-height: 1.15; text-align: center; }
+  .direction-tags, .visual-caption { display: none; }
   .directions-section, .explore-section { padding: 54px 16px 60px; }
   .section-heading h2 { font-size: 35px; }
   .direction-grid, .explore-grid, .about-values { grid-template-columns: 1fr; }
