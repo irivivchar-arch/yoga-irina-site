@@ -233,7 +233,7 @@ function renderModeSwitch() {
 function currentVisual(pose) {
   const variants = MY_PHOTOS[pose.id] || [];
   const index = Math.min(state.variantByPose[pose.id] || 0, Math.max(variants.length - 1, 0));
-  return variants[index] ? { ...variants[index], path:`./assets/mine/${variants[index].src}`, mine:true } : null;
+  return variants[index] ? { ...variants[index], path:`/assets/mine/${variants[index].src}`, mine:true } : null;
 }
 
 function cardImage(pose) {
@@ -361,7 +361,7 @@ function showCardVariant(card, index) {
   const image = card.querySelector(".card-image img");
   const count = card.querySelector(".variant-count");
   if (image) {
-    image.src = `./assets/mine/${variants[index].src}`;
+    image.src = `/assets/mine/${variants[index].src}`;
     image.alt = `${card.querySelector("h2")?.textContent || "Асана"}, ${variants[index].label}`;
     image.style.setProperty("--photo-focus", variants[index].focus || "50% 50%");
   }

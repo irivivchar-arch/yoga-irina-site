@@ -36,9 +36,13 @@ function renderClassFilters() {
 
 function renderClassCards() {
   if (!classCardsEl) return;
-  const recordings = activeRecordingStyle === "all"
+  const fixedStyle = classCardsEl.dataset.style;
+  const limit = Number(classCardsEl.dataset.limit || 0);
+  const selectedStyle = fixedStyle || activeRecordingStyle;
+  const filteredRecordings = selectedStyle === "all"
     ? window.CLASS_RECORDINGS
-    : window.CLASS_RECORDINGS.filter((item) => item.style === activeRecordingStyle);
+    : window.CLASS_RECORDINGS.filter((item) => item.style === selectedStyle);
+  const recordings = limit > 0 ? filteredRecordings.slice(0, limit) : filteredRecordings;
   classCardsEl.innerHTML = recordings.map((recording) => `
     <a class="class-card" href="${recording.url}" target="_blank" rel="noopener noreferrer" aria-label="Открыть занятие: ${escapeContentText(recording.title)}">
       <span class="class-cover">
@@ -55,14 +59,16 @@ function renderClassCards() {
   `).join("");
 }
 
-if (classCardsEl && classFiltersEl && window.CLASS_RECORDINGS) {
-  classFiltersEl.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-class-filter]");
-    if (!button) return;
-    activeRecordingStyle = button.dataset.classFilter;
+if (classCardsEl && window.CLASS_RECORDINGS) {
+  if (classFiltersEl) {
+    classFiltersEl.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-class-filter]");
+      if (!button) return;
+      activeRecordingStyle = button.dataset.classFilter;
+      renderClassFilters();
+      renderClassCards();
+    });
     renderClassFilters();
-    renderClassCards();
-  });
-  renderClassFilters();
+  }
   renderClassCards();
 }
