@@ -86,10 +86,7 @@ const MY_PHOTOS = {
     {src:"01-virabhadrasana-i-beginner-variation.jpg", label:"Вариант для новичков"},
   ],
   "virabhadrasana-2": [{src:"02-virabhadrasana-ii.jpg", label:"Основной вариант"}],
-  "virabhadrasana-3": [
-    {src:"11-virabhadrasana-iii.jpg", label:"Руки вытянуты"},
-    {src:"11-virabhadrasana-iii-namaste-variation.jpg", label:"Руки в намасте"},
-  ],
+  "virabhadrasana-3": [{src:"11-virabhadrasana-iii.jpg", label:"Руки вытянуты"}],
   "utthita-trikonasana": [{src:"09-utthita-trikonasana.jpg", label:"Основной вариант"}],
   "parivrtta-trikonasana": [{src:"10-parivrtta-trikonasana.jpg", label:"Основной вариант"}],
   "utthita-parsvakonasana": [{src:"03-utthita-parsvakonasana.jpg", label:"Основной вариант"}],
