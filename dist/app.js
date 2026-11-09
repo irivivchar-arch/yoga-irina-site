@@ -12,7 +12,7 @@ const CATEGORIES = {
 const defaultCues = ["Сохранять ровное спокойное дыхание", "Не допускать боли и резких ощущений", "Сверять положение суставов с пояснениями преподавателя"];
 
 const poses = [
-  {id:"surya-namaskar", ru:"Сурья Намаскар", sa:"Sūrya Namaskāra", alias:"приветствие солнцу шивананда аштанга виньяса", cat:"standing", showWithoutPhoto:true, hold:"Последовательность"},
+  {id:"surya-namaskar", ru:"Сурья Намаскар", sa:"Sūrya Namaskāra", alias:"приветствие солнцу шивананда аштанга виньяса", cat:"standing", showWithoutPhoto:true, published:false, hold:"Последовательность"},
   {id:"padangusthasana", ru:"Падангуштхасана", sa:"Pādāṅguṣṭhāsana", alias:"наклон стоя захват больших пальцев", cat:"standing", image:"padangusthasana.jpg", photo:"44", cues:["Стопы параллельны, вес распределён равномерно", "Живот и грудная клетка движутся к ногам", "Шея свободна, коленные чашечки подтянуты"]},
   {id:"chaturanga", ru:"Чатуранга Дандасана", sa:"Caturaṅga Daṇḍāsana", alias:"низкая планка четыре опоры", cat:"strength", image:"chaturanga-dandasana.jpg", images:["chaturanga-start.jpg","chaturanga-dandasana.jpg"], photo:"67", cues:["Тело вытянуто одной линией", "Локти направлены назад и прижаты к корпусу", "Плечи не проваливаются ниже без контроля"]},
   {id:"urdhva-mukha", ru:"Урдхва Мукха Шванасана", sa:"Ūrdhva Mukha Śvānāsana", alias:"собака мордой вверх прогиб", cat:"backbend", image:"urdhva-mukha-svanasana.jpg", photo:"74", cues:["Опора на ладони и подъёмы стоп, бёдра над полом", "Грудная клетка раскрывается вперёд и вверх", "Плечи отведены от ушей"]},
@@ -211,12 +211,13 @@ function normalize(value) {
 function filteredPoses() {
   const query = normalize(state.query);
   return poses.filter((pose) => {
+    const isPublished = pose.published !== false;
     const hasMyPhoto = Boolean(MY_PHOTOS[pose.id]?.length);
     const categoryMatch = state.category === "all" || pose.cat === state.category;
     const favoriteMatch = !state.favoritesOnly || state.favorites.has(pose.id);
     const haystack = normalize(`${pose.ru} ${pose.sa} ${pose.alias}`);
     const queryMatch = !query || query.split(" ").every((part) => haystack.includes(part));
-    return (hasMyPhoto || pose.showWithoutPhoto) && categoryMatch && favoriteMatch && queryMatch;
+    return isPublished && (hasMyPhoto || pose.showWithoutPhoto) && categoryMatch && favoriteMatch && queryMatch;
   });
 }
 
@@ -245,7 +246,7 @@ function cardImage(pose) {
 
 function renderCards() {
   const items = filteredPoses();
-  const withMyPhoto = poses.filter((pose) => MY_PHOTOS[pose.id]?.length || pose.showWithoutPhoto).length;
+  const withMyPhoto = poses.filter((pose) => pose.published !== false && (MY_PHOTOS[pose.id]?.length || pose.showWithoutPhoto)).length;
   resultCountEl.textContent = `Показано ${items.length} из ${withMyPhoto} опубликованных поз`;
   favoritesOnlyEl.classList.toggle("active", state.favoritesOnly);
   favoritesOnlyEl.textContent = state.favoritesOnly ? "★ Показаны избранные" : "☆ Только избранные";
