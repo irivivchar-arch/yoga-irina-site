@@ -236,7 +236,7 @@ function currentVisual(pose) {
 
 function cardImage(pose) {
   const visual = currentVisual(pose);
-  if (visual) return `<img src="${visual.path}" alt="${pose.ru}" loading="lazy" style="--photo-focus:${visual.focus || "50% 50%"}" /><span class="source-dot mine">Фото преподавателя</span>`;
+  if (visual) return `<img src="${visual.path}" alt="${pose.ru}" loading="lazy" style="--photo-focus:${visual.focus || "50% 50%"}" />`;
   if (pose.showWithoutPhoto) return `<div class="placeholder-art sequence-art" aria-label="Последовательность Сурья Намаскар"><span>☀</span></div><span class="source-dot sequence">Последовательность</span>`;
   return `<div class="placeholder-art" aria-label="Изображение будет добавлено"><span>${pose.ru.slice(0, 1)}</span></div>`;
 }
