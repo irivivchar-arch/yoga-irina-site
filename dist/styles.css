@@ -438,6 +438,12 @@ body.detail-open { overflow: hidden; }
   .contacts-main { min-height: 0; }
   .certificate-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
+@media (max-width: 700px) {
+  .direction-card { min-height: 195px; padding: 18px; border-radius: 18px; }
+  .direction-card h3 { margin: 7px 0; font-size: 27px; line-height: 1.02; }
+  .direction-card p { font-size: 11px; line-height: 1.4; }
+  .direction-card .card-link { margin-top: 14px; font-size: 9px; }
+}
 @media (max-width: 560px) {
   .site-header { position: relative; gap: 10px; }
   .site-brand strong { font-size: 15px; }
