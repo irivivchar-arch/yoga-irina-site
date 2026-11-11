@@ -499,3 +499,110 @@ body.detail-open { overflow: hidden; }
   .site-footer { align-items: flex-start; flex-direction: column; padding: 22px 16px; }
 }
 
+/* Readability: keep supporting text comfortable on desktop and mobile. */
+.brand small,
+.site-brand small,
+.eyebrow,
+.local-label,
+.detail-section h3,
+.card-category,
+.class-copy small,
+.flow-copy small,
+.contact-link span,
+.flow-placeholder-label,
+.format-copy small,
+.explore-card > span,
+.about-directions::before,
+.about-directions span,
+.about-values span,
+.contact-tile span,
+.certificate-copy small,
+.visual-caption span,
+.direction-tags::before,
+.direction-tags span { font-size: 12px; }
+
+.source-dot,
+.variant-count,
+.flow-number,
+.detail-gallery-status span,
+.detail-gallery-status small,
+.note-status { font-size: 12px; }
+
+.privacy,
+.section-nav a,
+.mode-switch button,
+.copy-title,
+.detail-mode-switch button,
+.variant-picker button,
+.hold,
+.class-intro a,
+.flow-intro a,
+.class-duration,
+.class-copy > span,
+.flow-copy > span,
+.direction-card .card-link,
+.format-copy b,
+.explore-card b,
+.page-intro-copy a,
+.return-link,
+.about-certificate-link,
+.contact-note span,
+.site-footer,
+.summary,
+.text-button,
+kbd { font-size: 13px; }
+
+.site-tabs a,
+.header-cta,
+.button,
+.class-filter { font-size: 13px; }
+
+.card-copy p,
+.compare span,
+.class-copy b,
+.certificate-copy > span { font-size: 12px; }
+
+.sanskrit,
+.compare strong,
+.detail-section li,
+.notes,
+.list-heading span,
+.list-heading p { font-size: 13px; }
+
+.guide-copy,
+.direction-card p,
+.format-copy > span,
+.explore-card p,
+.practice-audience,
+.about-values p,
+.contact-tile p,
+.contact-note p { font-size: 14px; }
+
+.practice-page-copy > p:not(.eyebrow):not(.practice-lead):not(.practice-highlight):not(.practice-audience) { font-size: 15px; }
+.direction-card small { font-size: 12px; opacity: .9; }
+.contact-tile span,
+.contact-tile p { opacity: .82; }
+.format-copy { min-height: 225px; }
+.direction-card { min-height: 265px; }
+
+@media (max-width: 700px) {
+  .direction-card { min-height: 225px; }
+  .direction-card p { font-size: 13px; line-height: 1.45; }
+  .direction-card .card-link { font-size: 12px; }
+}
+
+@media (max-width: 560px) {
+  .home-hero-copy .eyebrow { font-size: 12px; }
+  .hero-actions .button { font-size: 12px; }
+  .hero-motto { font-size: 13px; }
+  .site-tabs a { font-size: 12px; }
+  .header-cta { font-size: 12px; }
+  .direction-card { min-height: 195px; }
+  .direction-card p { font-size: 14px; }
+  .direction-card .card-link { font-size: 12px; }
+  .format-copy { min-height: 230px; }
+  .detail-title-row { display: grid; justify-items: start; gap: 10px; }
+  .detail-title-row h2 { margin-bottom: 0; overflow-wrap: anywhere; }
+  .copy-title { margin-bottom: 0; }
+}
+
