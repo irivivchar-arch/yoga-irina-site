@@ -292,19 +292,19 @@ body.detail-open { overflow: hidden; }
 
 .directions-section, .formats-section, .explore-section { padding: 76px 6vw 86px; }
 .directions-section { background: var(--paper); }
-.formats-section { border-top: 1px solid var(--line); background: var(--cream); }
+.formats-section { scroll-margin-top: 82px; border-top: 1px solid var(--line); background: var(--cream); }
 .explore-section { border-top: 1px solid var(--line); background: #f2f3ed; }
 .section-heading { display: grid; grid-template-columns: minmax(0,1fr) minmax(280px,.55fr); align-items: end; gap: 8vw; margin-bottom: 34px; }
 .section-heading h2 { max-width: 760px; margin: 0; font-family: Georgia,serif; font-size: clamp(36px,4vw,58px); font-weight: 400; line-height: 1; letter-spacing: -.035em; }
 .section-heading > p { margin: 0; color: var(--muted); font-family: Georgia,serif; font-size: 17px; line-height: 1.45; }
 .direction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.direction-card { min-height: 360px; display: flex; flex-direction: column; justify-content: space-between; padding: 28px; border-radius: 22px; color: #fff; background: var(--forest-deep); }
+.direction-card { min-height: 245px; display: flex; flex-direction: column; justify-content: space-between; padding: 28px; border-radius: 22px; color: #fff; background: var(--forest-deep); text-decoration: none; transition: transform .2s, box-shadow .2s; }
+.direction-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .direction-card.flow-direction-card { color: var(--forest-deep); background: var(--lime); }
-.card-index { align-self: flex-end; width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-size: 9px; opacity: .66; }
 .direction-card small { font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; opacity: .7; }
-.direction-card h3 { margin: 11px 0 10px; font-family: Georgia,serif; font-size: clamp(31px,3vw,46px); font-weight: 400; }
+.direction-card h3 { margin: 11px 0 10px; font-family: Georgia,serif; font-size: clamp(29px,3vw,42px); font-weight: 400; }
 .direction-card p { max-width: 500px; margin: 0; font-size: 13px; line-height: 1.6; opacity: .78; }
-.direction-card a { align-self: flex-start; color: inherit; font-size: 11px; font-weight: 700; text-underline-offset: 4px; }
+.direction-card .card-link { align-self: flex-start; margin-top: 24px; color: inherit; font-size: 11px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 .formats-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
 .format-card { min-width: 0; overflow: hidden; border: 1px solid #d0d5cb; border-radius: 20px; background: var(--paper); color: inherit; text-decoration: none; transition: transform .2s, border-color .2s, box-shadow .2s; }
 .format-card:hover { transform: translateY(-4px); border-color: #aab5a8; box-shadow: var(--shadow); }
@@ -358,6 +358,9 @@ body.detail-open { overflow: hidden; }
 .practice-highlight { margin: 20px 0 0; padding: 17px 18px; border-left: 3px solid var(--coral); background: rgba(255,255,255,.55); color: var(--forest-deep); font-family: Georgia,serif; font-size: 16px; line-height: 1.5; }
 .practice-audience { margin: 18px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
 .practice-page-copy .button { margin-top: 22px; }
+.return-link { display: inline-block; margin: 0 0 20px; color: var(--forest); font-size: 11px; font-weight: 700; text-decoration: underline; text-decoration-color: #a9b5ab; text-underline-offset: 4px; }
+.return-link:hover { text-decoration-color: var(--forest); }
+.page-intro-copy .return-link { margin-top: 0; margin-bottom: 17px; }
 .practice-story { display: grid; grid-template-columns: minmax(0,.8fr) minmax(360px,1fr); gap: 8vw; padding: 66px 6vw 72px; background: var(--paper); }
 .practice-story h2 { max-width: 620px; margin: 0; font-family: Georgia,serif; font-size: clamp(34px,3.7vw,54px); font-weight: 400; line-height: 1; letter-spacing: -.035em; }
 .practice-story-copy { max-width: 720px; }
@@ -459,7 +462,10 @@ body.detail-open { overflow: hidden; }
   .formats-grid { grid-template-columns: 1fr; }
   .format-card:last-child { grid-column: auto; }
   .format-copy { min-height: 205px; }
-  .direction-card { min-height: 290px; padding: 22px; }
+  .direction-card { min-height: 172px; padding: 19px 20px; border-radius: 18px; }
+  .direction-card h3 { margin: 7px 0 6px; font-size: 29px; line-height: 1; }
+  .direction-card p { font-size: 12px; line-height: 1.45; }
+  .direction-card .card-link { margin-top: 17px; font-size: 10px; }
   .home-contact-strip, .inline-contact { grid-template-columns: 1fr; align-items: start; padding: 45px 18px; }
   .page-intro { grid-template-columns: 1fr; gap: 23px; padding: 45px 18px 40px; }
   .page-intro h1 { font-size: 40px; }
