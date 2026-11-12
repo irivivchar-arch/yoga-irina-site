@@ -44,7 +44,7 @@ function renderClassCards() {
     : window.CLASS_RECORDINGS.filter((item) => item.style === selectedStyle);
   const recordings = limit > 0 ? filteredRecordings.slice(0, limit) : filteredRecordings;
   classCardsEl.innerHTML = recordings.map((recording) => `
-    <a class="class-card" href="${recording.url}" target="_blank" rel="noopener noreferrer" aria-label="Открыть занятие: ${escapeContentText(recording.title)}">
+    <a${recording.id === "vTHiEe4Fhm4" ? ' id="stretching"' : recording.id === "bU_SpIOyrzY" ? ' id="core"' : ""} class="class-card" href="${recording.url}" target="_blank" rel="noopener noreferrer" aria-label="Открыть занятие: ${escapeContentText(recording.title)}">
       <span class="class-cover">
         <img src="${recording.thumbnail}" alt="" loading="lazy" />
         <span class="play-mark" aria-hidden="true"><i></i></span>
@@ -71,4 +71,7 @@ if (classCardsEl && window.CLASS_RECORDINGS) {
     renderClassFilters();
   }
   renderClassCards();
+  if (["#stretching", "#core"].includes(window.location.hash)) {
+    requestAnimationFrame(() => document.querySelector(window.location.hash)?.scrollIntoView({ block: "center" }));
+  }
 }

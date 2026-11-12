@@ -302,6 +302,8 @@ body.detail-open { overflow: hidden; }
 .direction-card { min-height: 245px; display: flex; flex-direction: column; justify-content: space-between; padding: 28px; border-radius: 22px; color: #fff; background: var(--forest-deep); text-decoration: none; transition: transform .2s, box-shadow .2s; }
 .direction-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .direction-card.flow-direction-card { color: var(--forest-deep); background: var(--lime); }
+.direction-card.stretch-direction-card { color: var(--forest-deep); background: #efc7b5; }
+.direction-card.core-direction-card { color: var(--forest-deep); border: 1px solid #cbd3c8; background: #edf0e8; }
 .direction-card small { font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; opacity: .7; }
 .direction-card h3 { margin: 11px 0 10px; font-family: Georgia,serif; font-size: clamp(29px,3vw,42px); font-weight: 400; }
 .direction-card p { max-width: 500px; margin: 0; font-size: 13px; line-height: 1.6; opacity: .78; }
