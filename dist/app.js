@@ -83,7 +83,7 @@ const MY_PHOTOS = {
   "adho-mukha": [{src:"08-adho-mukha-svanasana.jpg", label:"Основной вариант"}],
   "virabhadrasana-1": [
     {src:"01-virabhadrasana-i-heel-down.jpg", label:"Пятка на полу"},
-    {src:"01-virabhadrasana-i-beginner-variation.jpg", label:"Вариант для новичков"},
+    {src:"01-virabhadrasana-i-beginner-variation.jpg", label:"Вариация"},
   ],
   "virabhadrasana-2": [{src:"02-virabhadrasana-ii.jpg", label:"Основной вариант"}],
   "virabhadrasana-3": [{src:"11-virabhadrasana-iii.jpg", label:"Руки вытянуты"}],
