@@ -404,6 +404,16 @@ body.detail-open { overflow: hidden; }
 .contact-tile strong { font-family: Georgia,serif; font-size: clamp(22px,2.4vw,33px); font-weight: 400; }
 .contact-tile p { margin: 0; font-size: 11px; opacity: .68; }
 .contact-tile b { position: absolute; right: 20px; top: 18px; }
+.pricing-section { padding: 70px 6vw 82px; border-top: 1px solid var(--line); background: var(--paper); }
+.pricing-heading { display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,.65fr); align-items: end; gap: 7vw; margin-bottom: 30px; }
+.pricing-heading .eyebrow { grid-column: 1 / -1; margin-bottom: -18px; }
+.pricing-heading h2 { margin: 0; font-family: Georgia,serif; font-size: clamp(38px,4.4vw,62px); font-weight: 400; line-height: 1; letter-spacing: -.035em; }
+.pricing-heading > p:last-child { margin: 0; color: var(--muted); font-family: Georgia,serif; font-size: 17px; line-height: 1.45; }
+.pricing-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.price-card { min-height: 245px; display: flex; flex-direction: column; padding: 22px; border: 1px solid #c9d0c7; border-radius: 19px; background: var(--cream); }
+.price-card small { color: var(--coral); font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.price-card h3 { margin: 38px 0 18px; font-family: Georgia,serif; font-size: 23px; font-weight: 400; line-height: 1.18; }
+.price-card strong { margin-top: auto; color: var(--forest); font-family: Georgia,serif; font-size: 31px; font-weight: 400; }
 .contact-note { display: grid; grid-template-columns: .35fr 1fr; gap: 6vw; padding: 30px 6vw; border-top: 1px solid var(--line); }
 .contact-note span { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .contact-note p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
@@ -447,6 +457,9 @@ body.detail-open { overflow: hidden; }
   .home-contact-strip > p { grid-column: 1 / -1; grid-row: 2; }
   .about-photo { min-height: 460px; }
   .contacts-main { min-height: 0; }
+  .pricing-heading { grid-template-columns: 1fr; gap: 16px; }
+  .pricing-heading .eyebrow { grid-column: auto; margin-bottom: 0; }
+  .pricing-grid { grid-template-columns: 1fr 1fr; }
   .certificate-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 @media (max-width: 700px) {
@@ -497,6 +510,9 @@ body.detail-open { overflow: hidden; }
   .about-lead { font-size: 18px; }
   .about-values { padding: 1px 16px 55px; }
   .contacts-main { padding: 45px 16px 55px; }
+  .pricing-section { padding: 52px 16px 60px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price-card { min-height: 205px; }
   .practice-page-hero { gap: 30px; padding: 35px 16px 50px; }
   .practice-page-image { min-height: 0; aspect-ratio: 4/3; }
   .practice-page-copy h1 { font-size: 42px; }
