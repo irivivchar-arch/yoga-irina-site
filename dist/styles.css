@@ -269,7 +269,7 @@ body.detail-open { overflow: hidden; }
 .site-tabs a { min-height: 40px; display: grid; place-items: center; padding: 0 15px; border-radius: 999px; color: #4f5e55; font-size: 12px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: background .18s, color .18s, box-shadow .18s; }
 .site-tabs a:hover { background: #fff; }
 .site-tabs a.active { background: var(--forest); color: #fff; box-shadow: 0 6px 18px rgba(37,49,42,.18); }
-.header-cta { justify-self: end; min-height: 42px; display: inline-flex; align-items: center; justify-content: center; padding: 0 17px; border-radius: 999px; background: var(--lime); color: var(--forest-deep); font-size: 12px; font-weight: 700; text-decoration: none; }
+.header-cta { justify-self: end; min-height: 42px; display: inline-flex; align-items: center; justify-content: center; padding: 0 17px; border-radius: 999px; background: var(--lime); color: var(--forest-deep); font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
 .header-cta:hover, .header-cta.active { background: var(--forest); color: #fff; }
 .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 19px; border: 1px solid transparent; border-radius: 999px; font-size: 12px; font-weight: 700; text-decoration: none; }
 .button.primary { background: var(--forest); color: #fff; }
@@ -414,9 +414,6 @@ body.detail-open { overflow: hidden; }
 .price-card small { color: var(--coral); font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .price-card h3 { margin: 38px 0 18px; font-family: Georgia,serif; font-size: 23px; font-weight: 400; line-height: 1.18; }
 .price-card strong { margin-top: auto; color: var(--forest); font-family: Georgia,serif; font-size: 31px; font-weight: 400; }
-.contact-note { display: grid; grid-template-columns: .35fr 1fr; gap: 6vw; padding: 30px 6vw; border-top: 1px solid var(--line); }
-.contact-note span { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.contact-note p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
 .certificate-section { padding: 44px 6vw 90px; background: var(--paper); }
 .certificate-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
 .certificate-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 19px; background: #fff; color: inherit; text-decoration: none; transition: transform .2s, border-color .2s, box-shadow .2s; }
@@ -469,10 +466,10 @@ body.detail-open { overflow: hidden; }
   .direction-card .card-link { margin-top: 14px; font-size: 14px; }
 }
 @media (max-width: 560px) {
-  .site-header { position: relative; gap: 10px; }
+  .site-header { position: relative; gap: 8px; padding-inline: 12px; }
   .site-brand strong { font-size: 15px; }
   .site-brand .brand-mark { width: 34px; height: 34px; }
-  .header-cta { min-height: 38px; padding-inline: 13px; font-size: 11px; }
+  .header-cta { min-height: 38px; padding-inline: 11px; font-size: 11px; }
   .site-tabs { grid-template-columns: repeat(3,1fr); gap: 3px; }
   .site-tabs a { min-height: 40px; font-size: 11px; }
   .home-hero { position: relative; display: block; padding: 12px; }
@@ -521,7 +518,6 @@ body.detail-open { overflow: hidden; }
   .practice-story-copy > p:not(.practice-highlight) { font-size: 16px; }
   .contacts-grid { min-width: 0; }
   .contact-tile { min-height: 155px; }
-  .contact-note { grid-template-columns: 1fr; gap: 10px; padding: 25px 16px; }
   .certificate-section { padding: 28px 16px 60px; }
   .certificate-grid { grid-template-columns: 1fr; }
   .certificate-copy { min-height: 132px; }
@@ -575,7 +571,6 @@ body.detail-open { overflow: hidden; }
 .page-intro-copy a,
 .return-link,
 .about-certificate-link,
-.contact-note span,
 .site-footer,
 .summary,
 .text-button,
@@ -604,8 +599,7 @@ kbd { font-size: 13px; }
 .explore-card p,
 .practice-audience,
 .about-values p,
-.contact-tile p,
-.contact-note p { font-size: 14px; }
+.contact-tile p { font-size: 14px; }
 
 .practice-page-copy > p:not(.eyebrow):not(.practice-lead):not(.practice-highlight):not(.practice-audience) { font-size: 15px; }
 .direction-card small { font-size: 12px; opacity: .9; }
