@@ -404,6 +404,29 @@ body.detail-open { overflow: hidden; }
 .contact-tile strong { font-family: Georgia,serif; font-size: clamp(22px,2.4vw,33px); font-weight: 400; }
 .contact-tile p { margin: 0; font-size: 11px; opacity: .68; }
 .contact-tile b { position: absolute; right: 20px; top: 18px; }
+.schedule-section { scroll-margin-top: 82px; padding: 72px 6vw 82px; border-top: 1px solid var(--line); background: #f2f3ed; }
+.schedule-heading { display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,.55fr); align-items: end; gap: 7vw; margin-bottom: 32px; }
+.schedule-heading h2 { margin: 0; font-family: Georgia,serif; font-size: clamp(40px,4.5vw,64px); font-weight: 400; line-height: .98; letter-spacing: -.04em; }
+.schedule-heading > p { margin: 0; color: var(--muted); font-family: Georgia,serif; font-size: 17px; line-height: 1.45; }
+.studio-block { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(330px,.75fr); gap: 16px; }
+.studio-copy, .studio-map { overflow: hidden; border: 1px solid #c9d0c7; border-radius: 22px; background: var(--paper); }
+.studio-copy { padding: 28px; }
+.schedule-kicker { margin: 0; color: var(--coral); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.studio-copy > h3, .online-schedule h3 { margin: 12px 0 26px; font-family: Georgia,serif; font-size: clamp(28px,3vw,40px); font-weight: 400; line-height: 1.08; }
+.schedule-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.schedule-list article { min-height: 145px; padding: 16px; border-radius: 15px; background: var(--cream); }
+.schedule-list article > strong { display: block; margin-bottom: 13px; font-family: Georgia,serif; font-size: 18px; font-weight: 400; }
+.schedule-list p { display: grid; grid-template-columns: 95px 1fr; gap: 8px; margin: 7px 0 0; color: var(--muted); font-size: 12px; line-height: 1.35; }
+.schedule-list time { color: var(--forest); font-weight: 700; }
+.studio-map { min-height: 560px; display: flex; flex-direction: column; }
+.studio-map iframe { width: 100%; min-height: 0; flex: 1 1 auto; border: 0; background: #e1e4dc; }
+.studio-map a { padding: 18px 20px; border-top: 1px solid var(--line); color: var(--forest); font-size: 13px; font-weight: 700; text-decoration: none; }
+.online-schedule { display: grid; grid-template-columns: minmax(240px,1fr) repeat(2,minmax(210px,.65fr)); gap: 12px; margin-top: 16px; padding: 25px; border-radius: 20px; background: var(--forest-deep); color: #fff; }
+.online-schedule h3 { margin-bottom: 0; }
+.online-schedule article { display: flex; flex-direction: column; justify-content: space-between; padding: 17px; border: 1px solid rgba(255,255,255,.16); border-radius: 15px; }
+.online-schedule article strong { color: var(--lime); font-size: 12px; }
+.online-schedule article time { margin: 25px 0 8px; font-family: Georgia,serif; font-size: 25px; }
+.online-schedule article span { color: #cad3cd; font-size: 13px; }
 .pricing-section { padding: 70px 6vw 82px; border-top: 1px solid var(--line); background: var(--paper); }
 .pricing-heading { display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,.65fr); align-items: end; gap: 7vw; margin-bottom: 30px; }
 .pricing-heading .eyebrow { grid-column: 1 / -1; margin-bottom: -18px; }
@@ -414,6 +437,18 @@ body.detail-open { overflow: hidden; }
 .price-card small { color: var(--coral); font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .price-card h3 { margin: 38px 0 18px; font-family: Georgia,serif; font-size: 23px; font-weight: 400; line-height: 1.18; }
 .price-card strong { margin-top: auto; color: var(--forest); font-family: Georgia,serif; font-size: 31px; font-weight: 400; }
+.practice-availability { display: grid; grid-template-columns: minmax(260px,.8fr) minmax(0,1.25fr) auto; align-items: center; gap: 5vw; padding: 48px 6vw 56px; border-top: 1px solid var(--line); background: #f2f3ed; }
+.practice-availability h2 { margin: 0 0 12px; font-family: Georgia,serif; font-size: clamp(30px,3.4vw,48px); font-weight: 400; line-height: 1; }
+.practice-availability > div:first-child > p:last-child { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.availability-times, .availability-groups { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 9px; }
+.availability-times article, .availability-groups article { min-height: 112px; display: flex; flex-direction: column; justify-content: space-between; padding: 15px; border: 1px solid #ccd2c9; border-radius: 14px; background: var(--paper); }
+.availability-times strong, .availability-groups strong { font-size: 12px; }
+.availability-times time, .availability-groups time { color: var(--forest); font-family: Georgia,serif; font-size: 20px; }
+.availability-groups { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.availability-groups small { color: var(--coral); font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.availability-groups p { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 12px 0 0; }
+.forming-group { grid-template-columns: minmax(0,1fr) auto; background: var(--lime); }
+.forming-group .button { border-color: var(--forest); }
 .certificate-section { padding: 44px 6vw 90px; background: var(--paper); }
 .certificate-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
 .certificate-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 19px; background: #fff; color: inherit; text-decoration: none; transition: transform .2s, border-color .2s, box-shadow .2s; }
@@ -454,6 +489,11 @@ body.detail-open { overflow: hidden; }
   .home-contact-strip > p { grid-column: 1 / -1; grid-row: 2; }
   .about-photo { min-height: 460px; }
   .contacts-main { min-height: 0; }
+  .schedule-heading, .studio-block, .practice-availability { grid-template-columns: 1fr; }
+  .studio-map { min-height: 420px; }
+  .online-schedule { grid-template-columns: 1fr 1fr; }
+  .online-schedule > div { grid-column: 1 / -1; }
+  .practice-availability .button { justify-self: start; }
   .pricing-heading { grid-template-columns: 1fr; gap: 16px; }
   .pricing-heading .eyebrow { grid-column: auto; margin-bottom: 0; }
   .pricing-grid { grid-template-columns: 1fr 1fr; }
@@ -507,9 +547,18 @@ body.detail-open { overflow: hidden; }
   .about-lead { font-size: 18px; }
   .about-values { padding: 1px 16px 55px; }
   .contacts-main { padding: 45px 16px 55px; }
+  .schedule-section { padding: 52px 16px 60px; }
+  .schedule-heading { grid-template-columns: 1fr; gap: 18px; }
+  .studio-copy { padding: 20px; }
+  .schedule-list { grid-template-columns: 1fr; }
+  .studio-map { min-height: 360px; }
+  .online-schedule { grid-template-columns: 1fr; padding: 18px; }
+  .online-schedule > div { grid-column: auto; }
   .pricing-section { padding: 52px 16px 60px; }
   .pricing-grid { grid-template-columns: 1fr; }
   .price-card { min-height: 205px; }
+  .practice-availability { gap: 24px; padding: 38px 16px 46px; }
+  .availability-times, .availability-groups { grid-template-columns: 1fr; }
   .practice-page-hero { gap: 30px; padding: 35px 16px 50px; }
   .practice-page-image { min-height: 0; aspect-ratio: 4/3; }
   .practice-page-copy h1 { font-size: 42px; }
