@@ -361,6 +361,12 @@ body.detail-open { overflow: hidden; }
 .practice-page-hero { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(380px,.95fr); align-items: stretch; gap: 6vw; padding: 58px 6vw 68px; background: var(--cream); }
 .practice-page-image { min-height: 520px; overflow: hidden; border-radius: 24px; background: #e2e5dd; box-shadow: var(--shadow); }
 .practice-page-image img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
+.practice-page-hero--landscape .practice-page-image { min-height: 0; aspect-ratio: 7/4; align-self: center; }
+.practice-page-hero--landscape .practice-page-image img { object-fit: contain; }
+@media (min-width: 821px) and (max-width: 1100px) {
+  .practice-page-hero--landscape { grid-template-columns: minmax(0,1fr); gap: 38px; }
+  .practice-page-hero--landscape .practice-page-copy { max-width: 900px; }
+}
 .practice-page-copy { align-self: center; max-width: 680px; }
 .practice-page-copy h1 { font-size: clamp(43px,4.7vw,68px); line-height: .96; }
 .practice-lead { margin: 24px 0 17px; color: #46564d; font-family: Georgia,serif; font-size: 20px; line-height: 1.45; }
