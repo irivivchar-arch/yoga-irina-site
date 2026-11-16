@@ -293,7 +293,7 @@ body.detail-open { overflow: hidden; }
 .visual-caption strong { font-family: Georgia,serif; font-size: 16px; font-weight: 400; }
 .visual-caption span { color: var(--muted); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
 
-.directions-section, .formats-section, .explore-section { padding: 76px 6vw 86px; }
+.directions-section, .formats-section, .explore-section { padding: 38px 6vw 43px; }
 .directions-section { background: var(--paper); }
 .formats-section { scroll-margin-top: 82px; border-top: 1px solid var(--line); background: var(--cream); }
 .explore-section { border-top: 1px solid var(--line); background: #f2f3ed; }
@@ -531,7 +531,7 @@ body.detail-open { overflow: hidden; }
   .hero-actions .button { min-height: 40px; padding: 0 8px; font-size: 9px; line-height: 1.15; text-align: center; }
   .hero-motto { margin-top: 11px; font-size: 11px; }
   .direction-tags, .visual-caption { display: none; }
-  .directions-section, .formats-section, .explore-section { padding: 54px 16px 60px; }
+  .directions-section, .formats-section, .explore-section { padding: 27px 16px 30px; }
   .section-heading h2 { font-size: 35px; }
   .direction-grid, .explore-grid, .about-values { grid-template-columns: 1fr; }
   .formats-grid { grid-template-columns: 1fr; }
