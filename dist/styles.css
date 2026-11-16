@@ -401,10 +401,11 @@ body.detail-open { overflow: hidden; }
 .about-values h2 { margin: 45px 0 10px; font-family: Georgia,serif; font-size: 25px; font-weight: 400; }
 .about-values p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
 
-.contacts-main { min-height: 0; display: grid; grid-template-columns: minmax(0,.9fr) minmax(430px,1.1fr); align-items: center; gap: 8vw; padding: 20px 6vw 18px; background: var(--cream); }
-.contacts-main > div:first-child > p:last-child { max-width: 570px; margin: 24px 0 0; color: #56645b; font-family: Georgia,serif; font-size: 19px; line-height: 1.5; }
-.contacts-grid { display: grid; gap: 12px; }
-.contact-tile { position: relative; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between; padding: 23px; border: 1px solid #c9d0c7; border-radius: 20px; background: var(--paper); color: inherit; text-decoration: none; }
+.contacts-main { min-height: 0; display: grid; grid-template-columns: 1fr; gap: 28px; padding: 24px 6vw 28px; background: var(--cream); }
+.contacts-main > div:first-child { display: grid; grid-template-columns: minmax(0,1fr) minmax(280px,.65fr); align-items: end; gap: 6vw; }
+.contacts-main > div:first-child > p:last-child { grid-column: 2; grid-row: 1 / span 2; max-width: 570px; margin: 0; color: #56645b; font-family: Georgia,serif; font-size: 18px; line-height: 1.5; }
+.contacts-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.contact-tile { position: relative; min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; padding: 23px; border: 1px solid #c9d0c7; border-radius: 20px; background: var(--paper); color: inherit; text-decoration: none; }
 .contact-tile.primary { border-color: rgba(41,69,56,.18); background: #5f6940; color: #fff; }
 .contact-tile span { font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; opacity: .65; }
 .contact-tile strong { font-family: Georgia,serif; font-size: clamp(22px,2.4vw,33px); font-weight: 400; }
@@ -497,6 +498,8 @@ body.detail-open { overflow: hidden; }
   .home-contact-strip > p { grid-column: 1 / -1; grid-row: 2; }
   .about-photo { min-height: 460px; }
   .contacts-main { min-height: 0; }
+  .contacts-main > div:first-child { grid-template-columns: 1fr; gap: 12px; }
+  .contacts-main > div:first-child > p:last-child { grid-column: auto; grid-row: auto; margin-top: 4px; }
   .schedule-heading, .studio-block, .practice-availability { grid-template-columns: 1fr; }
   .studio-map { min-height: 420px; }
   .online-schedule { grid-template-columns: 1fr 1fr; }
@@ -555,6 +558,7 @@ body.detail-open { overflow: hidden; }
   .about-lead { font-size: 18px; }
   .about-values { padding: 1px 16px 55px; }
   .contacts-main { padding: 20px 16px 16px; }
+  .contacts-grid { grid-template-columns: 1fr; }
   .schedule-section { padding: 16px 16px 20px; }
   .schedule-heading { grid-template-columns: 1fr; gap: 18px; }
   .studio-copy { padding: 20px; }
